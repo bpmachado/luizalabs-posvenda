@@ -27,7 +27,7 @@ public class AgendamentoDTO implements Serializable {
                 id = obj.getId();
                 dataEnvio = obj.getDataEnvio();
                 destinatario = obj.getDestinatario();
-                mensagem = obj.getDestinatario();
+                mensagem = obj.getMensagem();
         }
 
         public AgendamentoDTO(Integer id, Date dataEnvio, String destinatario, String mensagem) {
