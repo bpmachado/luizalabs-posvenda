@@ -1,7 +1,7 @@
 package br.com.luizalabs.posvenda.dto;
 
 import br.com.luizalabs.posvenda.domain.Agendamento;
-import lombok.*;
+import br.com.luizalabs.posvenda.domain.enums.CanalEnvio;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -20,6 +20,8 @@ public class AgendamentoDTO implements Serializable {
         @NotEmpty(message="Preenchimento obrigatório.")
         private String mensagem;
 
+        private Integer canalEnvio;
+
         AgendamentoDTO(){
         }
 
@@ -28,14 +30,10 @@ public class AgendamentoDTO implements Serializable {
                 dataEnvio = obj.getDataEnvio();
                 destinatario = obj.getDestinatario();
                 mensagem = obj.getMensagem();
+                canalEnvio = obj.getCanalEnvio().getCod();
         }
 
-        public AgendamentoDTO(Integer id, Date dataEnvio, String destinatario, String mensagem) {
-                this.id = id;
-                this.dataEnvio = dataEnvio;
-                this.destinatario = destinatario;
-                this.mensagem = mensagem;
-        }
+
 
         public Integer getId() {
                 return id;
@@ -67,5 +65,14 @@ public class AgendamentoDTO implements Serializable {
 
         public void setMensagem(String mensagem) {
                 this.mensagem = mensagem;
+        }
+
+        public CanalEnvio getCanalEnvio() {
+                return CanalEnvio.toEnum(canalEnvio);
+
+        }
+
+        public void setCanalEnvio(Integer canalEnvio) {
+                this.canalEnvio = canalEnvio;
         }
 }

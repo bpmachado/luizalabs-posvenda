@@ -1,9 +1,6 @@
 package br.com.luizalabs.posvenda.domain;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
+import br.com.luizalabs.posvenda.domain.enums.CanalEnvio;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,15 +21,19 @@ public class Agendamento implements Serializable {
     private Date dataEnvio;
     private String destinatario;
     private String mensagem;
+    private Integer canalEnvio;
 
     public Agendamento(){}
 
-    public Agendamento(Integer id, Date dataEnvio, String destinatario, String mensagem) {
+    public Agendamento(Integer id, Date dataEnvio, String destinatario, String mensagem, CanalEnvio canalEnvio) {
+        super();
         this.id = id;
         this.dataEnvio = dataEnvio;
         this.destinatario = destinatario;
         this.mensagem = mensagem;
+        this.canalEnvio = canalEnvio.getCod();
     }
+
 
     public Integer getId() {
         return id;
@@ -66,14 +67,12 @@ public class Agendamento implements Serializable {
         this.mensagem = mensagem;
     }
 
-    @Override
-    public String toString() {
-        return "Agendamento{" +
-                "id=" + id +
-                ", dataEnvio=" + dataEnvio +
-                ", destinatario='" + destinatario + '\'' +
-                ", mensagem='" + mensagem + '\'' +
-                '}';
+    public CanalEnvio getCanalEnvio() {
+        return CanalEnvio.toEnum(canalEnvio);
+    }
+
+    public void setCanalEnvio(CanalEnvio canalEnvio) {
+        this.canalEnvio = canalEnvio.getCod();
     }
 
     @Override
@@ -84,11 +83,12 @@ public class Agendamento implements Serializable {
         return Objects.equals(id, that.id) &&
                 Objects.equals(dataEnvio, that.dataEnvio) &&
                 Objects.equals(destinatario, that.destinatario) &&
-                Objects.equals(mensagem, that.mensagem);
+                Objects.equals(mensagem, that.mensagem) &&
+                Objects.equals(canalEnvio, that.canalEnvio);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dataEnvio, destinatario, mensagem);
+        return Objects.hash(id, dataEnvio, destinatario, mensagem, canalEnvio);
     }
 }

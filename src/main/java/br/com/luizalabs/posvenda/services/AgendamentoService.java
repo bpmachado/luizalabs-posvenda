@@ -1,6 +1,7 @@
 package br.com.luizalabs.posvenda.services;
 
 import br.com.luizalabs.posvenda.domain.Agendamento;
+import br.com.luizalabs.posvenda.domain.enums.CanalEnvio;
 import br.com.luizalabs.posvenda.dto.AgendamentoDTO;
 import br.com.luizalabs.posvenda.repositories.AgendamentoRepository;
 import br.com.luizalabs.posvenda.services.exception.DataIntegrityException;
@@ -30,7 +31,7 @@ public class AgendamentoService {
 
     public Agendamento fromDTO(AgendamentoDTO objDTO){
 
-        return new Agendamento(objDTO.getId(), objDTO.getDataEnvio(), objDTO.getDestinatario(), objDTO.getMensagem());
+        return new Agendamento(objDTO.getId(), objDTO.getDataEnvio(), objDTO.getDestinatario(), objDTO.getMensagem(), CanalEnvio.toEnum(objDTO.getCanalEnvio().getCod()));
     }
 
     public void delete(Integer id) {
