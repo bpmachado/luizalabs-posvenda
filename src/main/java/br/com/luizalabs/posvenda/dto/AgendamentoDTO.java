@@ -5,6 +5,7 @@ import br.com.luizalabs.posvenda.domain.enums.CanalEnvio;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Optional;
 import javax.validation.constraints.NotEmpty;
 
 public class AgendamentoDTO implements Serializable {
@@ -14,6 +15,8 @@ public class AgendamentoDTO implements Serializable {
 
         private Date dataEnvio;
 
+        private static String STATUS_REGISTRO = "Novo";
+
         @NotEmpty(message="Preenchimento obrigatório.")
         private String destinatario;
 
@@ -21,6 +24,8 @@ public class AgendamentoDTO implements Serializable {
         private String mensagem;
 
         private Integer canalEnvio;
+
+        private String status;
 
         AgendamentoDTO(){
         }
@@ -31,6 +36,7 @@ public class AgendamentoDTO implements Serializable {
                 destinatario = obj.getDestinatario();
                 mensagem = obj.getMensagem();
                 canalEnvio = obj.getCanalEnvio().getCod();
+                status = obj.getStatus();
         }
 
 
@@ -74,5 +80,13 @@ public class AgendamentoDTO implements Serializable {
 
         public void setCanalEnvio(Integer canalEnvio) {
                 this.canalEnvio = canalEnvio;
+        }
+
+        public String getStatus() {
+                return status;
+        }
+
+        public void setStatus(String status) {
+                this.status = status;
         }
 }

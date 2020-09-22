@@ -9,11 +9,14 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import java.util.Optional;
 
 
 @Entity
 public class Agendamento implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    private static String STATUS_REGISTRO = "Novo";
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -22,16 +25,18 @@ public class Agendamento implements Serializable {
     private String destinatario;
     private String mensagem;
     private Integer canalEnvio;
+    private String status;
 
     public Agendamento(){}
 
-    public Agendamento(Integer id, Date dataEnvio, String destinatario, String mensagem, CanalEnvio canalEnvio) {
+    public Agendamento(Integer id, Date dataEnvio, String destinatario, String mensagem, CanalEnvio canalEnvio, String status) {
         super();
         this.id = id;
         this.dataEnvio = dataEnvio;
         this.destinatario = destinatario;
         this.mensagem = mensagem;
         this.canalEnvio = canalEnvio.getCod();
+        this.status = Optional.ofNullable(STATUS_REGISTRO).orElse(status);
     }
 
 
@@ -73,6 +78,14 @@ public class Agendamento implements Serializable {
 
     public void setCanalEnvio(CanalEnvio canalEnvio) {
         this.canalEnvio = canalEnvio.getCod();
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     @Override

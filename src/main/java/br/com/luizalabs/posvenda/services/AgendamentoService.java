@@ -31,7 +31,7 @@ public class AgendamentoService {
 
     public Agendamento fromDTO(AgendamentoDTO objDTO){
 
-        return new Agendamento(objDTO.getId(), objDTO.getDataEnvio(), objDTO.getDestinatario(), objDTO.getMensagem(), CanalEnvio.toEnum(objDTO.getCanalEnvio().getCod()));
+        return new Agendamento(objDTO.getId(), objDTO.getDataEnvio(), objDTO.getDestinatario(), objDTO.getMensagem(), CanalEnvio.toEnum(objDTO.getCanalEnvio().getCod()), objDTO.getStatus());
     }
 
     public void delete(Integer id) {
