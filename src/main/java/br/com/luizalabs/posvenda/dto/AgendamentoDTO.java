@@ -1,11 +1,10 @@
 package br.com.luizalabs.posvenda.dto;
 
 import br.com.luizalabs.posvenda.domain.Agendamento;
-import br.com.luizalabs.posvenda.domain.enums.CanalEnvio;
+import br.com.luizalabs.posvenda.domain.enums.TipoEnvio;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Optional;
 import javax.validation.constraints.NotEmpty;
 
 public class AgendamentoDTO implements Serializable {
@@ -23,7 +22,7 @@ public class AgendamentoDTO implements Serializable {
         @NotEmpty(message="Preenchimento obrigatório.")
         private String mensagem;
 
-        private Integer canalEnvio;
+        private Integer tipoEnvio;
 
         private String status;
 
@@ -35,7 +34,7 @@ public class AgendamentoDTO implements Serializable {
                 dataEnvio = obj.getDataEnvio();
                 destinatario = obj.getDestinatario();
                 mensagem = obj.getMensagem();
-                canalEnvio = obj.getCanalEnvio().getCod();
+                tipoEnvio = obj.getTipoEnvio().getCod();
                 status = obj.getStatus();
         }
 
@@ -73,13 +72,13 @@ public class AgendamentoDTO implements Serializable {
                 this.mensagem = mensagem;
         }
 
-        public CanalEnvio getCanalEnvio() {
-                return CanalEnvio.toEnum(canalEnvio);
+        public TipoEnvio getTipoEnvio() {
+                return TipoEnvio.toEnum(tipoEnvio);
 
         }
 
-        public void setCanalEnvio(Integer canalEnvio) {
-                this.canalEnvio = canalEnvio;
+        public void setTipoEnvio(Integer tipoEnvio) {
+                this.tipoEnvio = tipoEnvio;
         }
 
         public String getStatus() {

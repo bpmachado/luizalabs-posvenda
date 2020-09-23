@@ -1,13 +1,12 @@
 package br.com.luizalabs.posvenda.services;
 
 import br.com.luizalabs.posvenda.domain.Agendamento;
-import br.com.luizalabs.posvenda.domain.enums.CanalEnvio;
+import br.com.luizalabs.posvenda.domain.enums.TipoEnvio;
 import br.com.luizalabs.posvenda.repositories.AgendamentoRepository;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Service
 public class DBService {
@@ -26,7 +25,7 @@ public class DBService {
         agendamento.setDataEnvio(sdf.parse( "21/09/2020"));
         agendamento.setDestinatario("bpmachado@gmail.com");
         agendamento.setMensagem("Novo cliente luizalabs");
-        agendamento.setCanalEnvio(CanalEnvio.EMAIL);
+        agendamento.setTipoEnvio(TipoEnvio.EMAIL);
         agendamento.setStatus("Enviado");
 
         agendamentoRepository.save(agendamento);

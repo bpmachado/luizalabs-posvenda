@@ -1,6 +1,6 @@
 package br.com.luizalabs.posvenda.domain.enums;
 
-public enum CanalEnvio {
+public enum TipoEnvio {
     EMAIL(1, "Email"),
     SMS(2, "Sms"),
     PUSH(3, "Push"),
@@ -9,7 +9,7 @@ public enum CanalEnvio {
     private int cod;
     private String descricao;
 
-    private CanalEnvio(int cod, String descricao) {
+    private TipoEnvio(int cod, String descricao) {
         this.cod = cod;
         this.descricao = descricao;
     }
@@ -22,12 +22,12 @@ public enum CanalEnvio {
         return descricao;
     }
 
-    public static CanalEnvio toEnum(Integer cod) {
+    public static TipoEnvio toEnum(Integer cod) {
         if(cod == null) {
             return null;
         }
 
-        for(CanalEnvio x : CanalEnvio.values()) {
+        for(TipoEnvio x : TipoEnvio.values()) {
             if(cod.equals(x.getCod())) {
                 return x;
             }

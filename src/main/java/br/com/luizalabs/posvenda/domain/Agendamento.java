@@ -1,6 +1,6 @@
 package br.com.luizalabs.posvenda.domain;
 
-import br.com.luizalabs.posvenda.domain.enums.CanalEnvio;
+import br.com.luizalabs.posvenda.domain.enums.TipoEnvio;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,18 +24,18 @@ public class Agendamento implements Serializable {
     private Date dataEnvio;
     private String destinatario;
     private String mensagem;
-    private Integer canalEnvio;
+    private Integer tipoEnvio;
     private String status;
 
     public Agendamento(){}
 
-    public Agendamento(Integer id, Date dataEnvio, String destinatario, String mensagem, CanalEnvio canalEnvio, String status) {
+    public Agendamento(Integer id, Date dataEnvio, String destinatario, String mensagem, TipoEnvio tipoEnvio, String status) {
         super();
         this.id = id;
         this.dataEnvio = dataEnvio;
         this.destinatario = destinatario;
         this.mensagem = mensagem;
-        this.canalEnvio = canalEnvio.getCod();
+        this.tipoEnvio = tipoEnvio.getCod();
         this.status = Optional.ofNullable(STATUS_REGISTRO).orElse(status);
     }
 
@@ -72,12 +72,12 @@ public class Agendamento implements Serializable {
         this.mensagem = mensagem;
     }
 
-    public CanalEnvio getCanalEnvio() {
-        return CanalEnvio.toEnum(canalEnvio);
+    public TipoEnvio getTipoEnvio() {
+        return TipoEnvio.toEnum(tipoEnvio);
     }
 
-    public void setCanalEnvio(CanalEnvio canalEnvio) {
-        this.canalEnvio = canalEnvio.getCod();
+    public void setTipoEnvio(TipoEnvio tipoEnvio) {
+        this.tipoEnvio = tipoEnvio.getCod();
     }
 
     public void setStatus(String status) {
@@ -97,11 +97,11 @@ public class Agendamento implements Serializable {
                 Objects.equals(dataEnvio, that.dataEnvio) &&
                 Objects.equals(destinatario, that.destinatario) &&
                 Objects.equals(mensagem, that.mensagem) &&
-                Objects.equals(canalEnvio, that.canalEnvio);
+                Objects.equals(tipoEnvio, that.tipoEnvio);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dataEnvio, destinatario, mensagem, canalEnvio);
+        return Objects.hash(id, dataEnvio, destinatario, mensagem, tipoEnvio);
     }
 }
