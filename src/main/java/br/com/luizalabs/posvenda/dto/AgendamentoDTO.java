@@ -2,15 +2,18 @@ package br.com.luizalabs.posvenda.dto;
 
 import br.com.luizalabs.posvenda.domain.Agendamento;
 import br.com.luizalabs.posvenda.domain.enums.TipoEnvio;
+import br.com.luizalabs.posvenda.validation.AgendamentoInsert;
 
 import java.io.Serializable;
 import java.util.Date;
 import javax.validation.constraints.NotEmpty;
 
+@AgendamentoInsert
 public class AgendamentoDTO implements Serializable {
         private static final long serialVersionUID = 1L;
 
         private Integer id;
+
 
         private Date dataEnvio;
 
