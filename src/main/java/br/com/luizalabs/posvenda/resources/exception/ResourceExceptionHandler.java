@@ -18,21 +18,21 @@ public class ResourceExceptionHandler {
 	
 	@ExceptionHandler(ObjectNotFoundException.class)
 	public ResponseEntity<StanderError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request){
-		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Não encontrado", e.getMessage(), request.getRequestURI());
+		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Não encontrado", request.getRequestURI());
 		
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
 	
 	@ExceptionHandler(DataIntegrityException.class)
 	public ResponseEntity<StanderError> dataIntegrety(DataIntegrityException e, HttpServletRequest request){
-		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Integridade de dados", e.getMessage(), request.getRequestURI());
+		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Integridade de dados", request.getRequestURI());
 		
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
 	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<StanderError> validation(MethodArgumentNotValidException e, HttpServletRequest request){
-		ValidationError err = new ValidationError(System.currentTimeMillis(), HttpStatus.UNPROCESSABLE_ENTITY.value(), "Erro de validação", e.getMessage(), request.getRequestURI());
+		ValidationError err = new ValidationError(System.currentTimeMillis(), HttpStatus.UNPROCESSABLE_ENTITY.value(), "Erro de validação", request.getRequestURI());
 		for(FieldError x : e.getBindingResult().getFieldErrors()){
 			err.setAdd(x.getField(), x.getDefaultMessage());
 		}
@@ -42,18 +42,16 @@ public class ResourceExceptionHandler {
 
 	@ExceptionHandler(EmptyResultDataAccessException.class)
 	public ResponseEntity<StanderError> emptyResult(EmptyResultDataAccessException e, HttpServletRequest request){
-		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Registro não encontrado", e.getMessage(), request.getRequestURI());
+		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Registro não encontrado", request.getRequestURI());
 
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
 
 	@ExceptionHandler(IllegalArgumentException.class)
 	public ResponseEntity<StanderError> iilegalArgumentException(IllegalArgumentException e, HttpServletRequest request){
-		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Dados de entrada inválido", e.getMessage(), request.getRequestURI());
+		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Dados de entrada inválido para o campo tipoEnvio, por favor enviar o número 1-E-mail, 2-SMS, 3-PUSH e 4-WHASTAPP", request.getRequestURI());
 
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
-
-
 
 }

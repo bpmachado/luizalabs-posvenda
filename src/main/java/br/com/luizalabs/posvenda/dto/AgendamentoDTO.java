@@ -3,6 +3,7 @@ package br.com.luizalabs.posvenda.dto;
 import br.com.luizalabs.posvenda.domain.Agendamento;
 import br.com.luizalabs.posvenda.domain.enums.TipoEnvio;
 import br.com.luizalabs.posvenda.validation.AgendamentoInsert;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,7 +15,7 @@ public class AgendamentoDTO implements Serializable {
 
         private Integer id;
 
-
+        @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="America/Sao_Paulo")
         private Date dataEnvio;
 
         private static String STATUS_REGISTRO = "Novo";

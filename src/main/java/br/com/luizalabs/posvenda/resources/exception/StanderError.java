@@ -9,17 +9,16 @@ public class StanderError implements Serializable{
 	private Long timeStamp;
 	private Integer status;
 	private String error;
-	private String message;
 	private String path;
 
-	public StanderError(Long timeStamp, Integer status, String error, String message, String path) {
+	public StanderError(Long timeStamp, Integer status, String error, String path) {
 		super();
 		this.timeStamp = timeStamp;
 		this.status = status;
 		this.error = error;
-		this.message = message;
 		this.path = path;
 	}
+
 
 	public Long getTimeStamp() {
 		return timeStamp;
@@ -43,14 +42,6 @@ public class StanderError implements Serializable{
 
 	public void setError(String error) {
 		this.error = error;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 	public String getPath() {

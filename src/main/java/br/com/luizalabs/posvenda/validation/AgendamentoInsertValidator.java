@@ -21,7 +21,7 @@ public class AgendamentoInsertValidator implements ConstraintValidator<Agendamen
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
-    private Date dataAtual;
+    private Calendar dataAtual;
 
     @Override
     public void initialize(AgendamentoInsert constraintAnnotation) {
@@ -30,8 +30,11 @@ public class AgendamentoInsertValidator implements ConstraintValidator<Agendamen
     @Override
     public boolean isValid(AgendamentoDTO agendamentoDTO, ConstraintValidatorContext context) {
         List<FieldMessage> list = new ArrayList<>();
-        
+        dataAtual = Calendar.getInstance();
 
+        if(!dataAtual.getTime().before(agendamentoDTO.getDataEnvio())){
+            list.add(new FieldMessage("dataEnvio","A Data/Hora de envio não pode ser menor que a data atual."));
+        }
 
         for(FieldMessage e : list){
             context.disableDefaultConstraintViolation();

@@ -7,8 +7,8 @@ public class ValidationError extends StanderError {
     private static final long serialVersionUID = 1L;
     private List<FieldMessage> errors = new ArrayList<>();
 
-    public ValidationError(Long timeStamp, Integer status, String error, String message, String path) {
-        super(timeStamp, status, error, message, path);
+    public ValidationError(Long timeStamp, Integer status, String error, String path) {
+        super(timeStamp, status, error, path);
     }
 
 
