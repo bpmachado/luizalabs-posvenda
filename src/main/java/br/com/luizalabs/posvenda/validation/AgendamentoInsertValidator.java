@@ -4,7 +4,6 @@ import br.com.luizalabs.posvenda.dto.AgendamentoDTO;
 import br.com.luizalabs.posvenda.repositories.AgendamentoRepository;
 import br.com.luizalabs.posvenda.resources.exception.FieldMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.ArrayList;

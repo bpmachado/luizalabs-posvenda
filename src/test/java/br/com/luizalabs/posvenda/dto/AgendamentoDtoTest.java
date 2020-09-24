@@ -5,9 +5,7 @@ import br.com.luizalabs.posvenda.domain.enums.TipoEnvio;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

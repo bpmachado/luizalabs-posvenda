@@ -1,12 +1,9 @@
 package br.com.luizalabs.posvenda.resources.exception;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.UnexpectedTypeException;
 import javax.validation.ValidationException;
-
 import br.com.luizalabs.posvenda.services.exception.DataIntegrityException;
 import br.com.luizalabs.posvenda.services.exception.ObjectNotFoundException;
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

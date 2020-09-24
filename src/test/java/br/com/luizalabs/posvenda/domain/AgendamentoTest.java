@@ -1,13 +1,9 @@
 package br.com.luizalabs.posvenda.domain;
 
-import br.com.luizalabs.posvenda.Application;
 import br.com.luizalabs.posvenda.domain.enums.TipoEnvio;
 import org.junit.Test;
-import org.springframework.boot.test.mock.mockito.MockBean;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class AgendamentoTest {
 

@@ -1,8 +1,9 @@
-package br.com.luizalabs.posvenda.services;
+package br.com.luizalabs.posvenda.repositories;
 
 import br.com.luizalabs.posvenda.domain.Agendamento;
 import br.com.luizalabs.posvenda.domain.enums.TipoEnvio;
 import br.com.luizalabs.posvenda.repositories.AgendamentoRepository;
+import br.com.luizalabs.posvenda.services.AgendamentoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

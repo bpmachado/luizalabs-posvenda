@@ -6,7 +6,6 @@ import br.com.luizalabs.posvenda.dto.AgendamentoDTO;
 import br.com.luizalabs.posvenda.repositories.AgendamentoRepository;
 import br.com.luizalabs.posvenda.services.exception.DataIntegrityException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
