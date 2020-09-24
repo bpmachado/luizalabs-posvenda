@@ -41,11 +41,7 @@ public class AgendamentoService {
 
     public void delete(Integer id) {
         find(id);
-        try {
-            agendamentoRepository.deleteById(id);
-        }catch(DataIntegrityViolationException e) {
-            throw new DataIntegrityException("Não é Possivel excluir uma agendamento");
-        }
+        agendamentoRepository.deleteById(id);
     }
 
     public List<Agendamento> findAll() {
