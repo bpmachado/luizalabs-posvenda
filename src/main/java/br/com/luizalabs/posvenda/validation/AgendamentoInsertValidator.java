@@ -7,14 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-
-import static java.util.Calendar.*;
 
 public class AgendamentoInsertValidator implements ConstraintValidator<AgendamentoInsert, AgendamentoDTO> {
 

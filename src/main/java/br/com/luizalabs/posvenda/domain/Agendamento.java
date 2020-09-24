@@ -88,20 +88,4 @@ public class Agendamento implements Serializable {
         return status;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Agendamento that = (Agendamento) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(dataEnvio, that.dataEnvio) &&
-                Objects.equals(destinatario, that.destinatario) &&
-                Objects.equals(mensagem, that.mensagem) &&
-                Objects.equals(tipoEnvio, that.tipoEnvio);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, dataEnvio, destinatario, mensagem, tipoEnvio);
-    }
 }
