@@ -1,4 +1,4 @@
-# LuizaLabs-Pós-Venda API - Platafaforma de Comunicação
+# LuizaLabs-Pós-Venda API - Plataforma de Comunicação
 
 # Criar o banco de dados com nome luizalabs(jdbc:mysql://localhost:3306/luizalabs), a tabela será criada em tempo de execução.
 
