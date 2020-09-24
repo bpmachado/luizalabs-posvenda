@@ -1,12 +1,16 @@
 package br.com.luizalabs.posvenda.resources.exception;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.UnexpectedTypeException;
+import javax.validation.ValidationException;
 
 import br.com.luizalabs.posvenda.services.exception.DataIntegrityException;
 import br.com.luizalabs.posvenda.services.exception.ObjectNotFoundException;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -53,5 +57,20 @@ public class ResourceExceptionHandler {
 
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
+
+	@ExceptionHandler(ValidationException.class)
+	public ResponseEntity<StanderError> validationException(ValidationException e, HttpServletRequest request){
+		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Formato de Entrada inválida", request.getRequestURI());
+
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+	}
+
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+	public ResponseEntity<StanderError> httpMessageNotReadableException(HttpMessageNotReadableException e, HttpServletRequest request){
+		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Formato de Entrada inválida", request.getRequestURI());
+
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+	}
+
 
 }
