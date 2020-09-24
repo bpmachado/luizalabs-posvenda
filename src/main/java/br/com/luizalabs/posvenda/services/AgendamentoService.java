@@ -21,6 +21,11 @@ public class AgendamentoService {
 
     public Agendamento find(Integer id){
         Optional<Agendamento> obj = agendamentoRepository.findById(id);
+
+        if(!obj.isPresent()){
+            throw new DataIntegrityException("Registro não encontrado");
+        }
+
         return obj.orElse(null);
     }
 
@@ -44,7 +49,14 @@ public class AgendamentoService {
     }
 
     public List<Agendamento> findAll() {
-        return agendamentoRepository.findAll();
+
+        List<Agendamento> obj = agendamentoRepository.findAll();
+
+        if(obj.size()==0){
+            throw new DataIntegrityException("Registro não encontrado");
+        }
+
+        return obj;
     }
 
 

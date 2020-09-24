@@ -3,22 +3,14 @@ package br.com.luizalabs.posvenda.services;
 import br.com.luizalabs.posvenda.domain.Agendamento;
 import br.com.luizalabs.posvenda.domain.enums.TipoEnvio;
 import br.com.luizalabs.posvenda.repositories.AgendamentoRepository;
-
-import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -67,12 +59,6 @@ public class AgendamentoServiceTest {
         agendamento.setId(1);
         agendamento.setTipoEnvio(TipoEnvio.EMAIL);
 
-        agendamentoService.find(agendamento.getId());
-
-
-
-        //doReturn(Optional.of(agendamento)).when(agendamentoRepository).findById(1);
-        // Assert the response
         lenient().when(agendamentoRepository.findById(1)).thenReturn(Optional.of(agendamento));
 
     }
@@ -87,8 +73,6 @@ public class AgendamentoServiceTest {
         agendamento.setDataEnvio(sdf.parse( "21/09/2020"));
         agendamento.setId(1);
         agendamento.setTipoEnvio(TipoEnvio.EMAIL);
-
-
 
         agendamentoRepository.deleteById(agendamento.getId());
         verify(agendamentoRepository, times(1)).deleteById(agendamento.getId());

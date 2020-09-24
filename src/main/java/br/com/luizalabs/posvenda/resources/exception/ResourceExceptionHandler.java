@@ -25,7 +25,7 @@ public class ResourceExceptionHandler {
 	
 	@ExceptionHandler(DataIntegrityException.class)
 	public ResponseEntity<StanderError> dataIntegrety(DataIntegrityException e, HttpServletRequest request){
-		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Integridade de dados", request.getRequestURI());
+		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Registro não encontado", request.getRequestURI());
 		
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
 	}
