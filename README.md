@@ -15,7 +15,7 @@ Body de entrada:
     "tipoEnvio": 1
 }
 
-Obs.: Campo tipoEnvio só pode ser enviado os números:
+Obs.: O Campo tipoEnvio só pode ser enviado o número:
 
     1 - E-mail
     2 - SMS
