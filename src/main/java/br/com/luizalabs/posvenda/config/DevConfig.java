@@ -17,7 +17,7 @@ public class DevConfig {
     private DBService dbService;
 
     @Value("${spring.jpa.hibernate.ddl-auto}")
-    private String strategy;
+    public String strategy;
 
 
     @Bean
@@ -29,6 +29,7 @@ public class DevConfig {
             dbService.instantiateTestDataBase();
             return true;
         }
+
 
 
     }

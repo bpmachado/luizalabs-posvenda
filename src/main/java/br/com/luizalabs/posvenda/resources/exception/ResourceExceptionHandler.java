@@ -26,9 +26,9 @@ public class ResourceExceptionHandler {
 	
 	@ExceptionHandler(DataIntegrityException.class)
 	public ResponseEntity<StanderError> dataIntegrety(DataIntegrityException e, HttpServletRequest request){
-		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Registro não encontado", request.getRequestURI());
+		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Registro não encontado", request.getRequestURI());
 		
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
@@ -50,23 +50,23 @@ public class ResourceExceptionHandler {
 
 	@ExceptionHandler(IllegalArgumentException.class)
 	public ResponseEntity<StanderError> iilegalArgumentException(IllegalArgumentException e, HttpServletRequest request){
-		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Dados de entrada inválido para o campo tipoEnvio, por favor enviar o número 1-E-mail, 2-SMS, 3-PUSH e 4-WHASTAPP", request.getRequestURI());
+		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Dados de entrada inválido para o campo tipoEnvio, por favor enviar o número 1-E-mail, 2-SMS, 3-PUSH e 4-WHASTAPP", request.getRequestURI());
 
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
 	}
 
 	@ExceptionHandler(ValidationException.class)
 	public ResponseEntity<StanderError> validationException(ValidationException e, HttpServletRequest request){
-		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Formato de Entrada inválida", request.getRequestURI());
+		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Formato de Entrada inválida", request.getRequestURI());
 
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
 	}
 
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public ResponseEntity<StanderError> httpMessageNotReadableException(HttpMessageNotReadableException e, HttpServletRequest request){
-		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Formato de Entrada inválida", request.getRequestURI());
+		StanderError err = new StanderError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Formato de Entrada inválida", request.getRequestURI());
 
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
 	}
 
 

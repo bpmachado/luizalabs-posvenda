@@ -82,7 +82,7 @@ public class ExceptionTest {
         ResourceExceptionHandler resourceExceptionHandler = new ResourceExceptionHandler();
         ResponseEntity retorno = resourceExceptionHandler.dataIntegrety(obj,httpServletRequest);
 
-        Assert.assertEquals(HttpStatus.BAD_REQUEST.value(), retorno.getStatusCodeValue());
+        Assert.assertEquals(HttpStatus.NOT_FOUND.value(), retorno.getStatusCodeValue());
     }
 
 
